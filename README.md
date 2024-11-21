@@ -1,7 +1,5 @@
 <h1>Powershell scripts</h1>
 
- ### [YouTube Demonstration](https://youtu.be/7eJexJVCqJo)
-
 <h2>Description</h2>
 Multiple scripts that automate some tasks. 
 Every script I will explain below:
