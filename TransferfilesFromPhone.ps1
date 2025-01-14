@@ -1,3 +1,6 @@
+#TODO try-catch it
+#TODO Log it
+
 # Define source and destination paths
 # Replace 'YourPhoneName' with the actual name of your phone's MTP device as it appears in Windows Explorer
 
