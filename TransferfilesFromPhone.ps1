@@ -25,17 +25,22 @@ function Copy-MTPFiles {
     foreach ($item in $items) {
         $sourceItemPath = Join-Path -Path $source -ChildPath $item.Name
         $destinationItemPath = Join-Path -Path $destination -ChildPath $item.Name
-
-        if ($item.PSIsContainer) {
-            # If it's a directory, create it in the destination and recurse
-            if (!(Test-Path -Path $destinationItemPath)) {
-                New-Item -ItemType Directory -Path $destinationItemPath
-            }
-            Copy-MTPFiles -source $sourceItemPath -destination $destinationItemPath
-        } else {
-            # If it's a file, copy it
-            Copy-Item -Path $sourceItemPath -Destination $destinationItemPath -Force
+        try { 
+            if ($item.PSIsContainer) {
+                # If it's a directory, create it in the destination and recurse
+                if (!(Test-Path -Path $destinationItemPath)) {
+                    New-Item -ItemType Directory -Path $destinationItemPath
+                }
+                Copy-MTPFiles -source $sourceItemPath -destination $destinationItemPath
+            } else {
+                # If it's a file, copy it
+                Copy-Item -Path $sourceItemPath -Destination $destinationItemPath -Force
+            }    
         }
+        catch {
+            <#Do this if a terminating exception happens#>
+        }
+        
     }
 }
 
