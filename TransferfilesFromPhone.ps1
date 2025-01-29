@@ -26,6 +26,7 @@ function Copy-MTPFiles {
         [string]$destination
     )
 
+    write-host (Get-Date) "script started" -ForegroundColor Cyan
     # Get the list of files and directories in the source path
     $items = Get-ChildItem -Path $source -Force -ErrorAction SilentlyContinue
 
@@ -48,7 +49,7 @@ function Copy-MTPFiles {
         }
         catch {
              # Log errors
-            Write-Host "An error occurred:" $_ -ForegroundColor Red
+            Write-Host (get-date) "An error occurred: $_" -ForegroundColor Red
         }       
     }
 }
@@ -59,11 +60,11 @@ try {
 }
 catch {
      # Log errors
-     Write-Host "An error occurred: $_" -ForegroundColor Red
+     Write-Host (get-date) "An error occurred: $_" -ForegroundColor Red
 }
 finally {
     # Completion message
-    Write-Host "Operation complete. Check the log at $LogFile for details." -ForegroundColor Cyan
+    Write-Host (Get-Date)"Operation complete. Check the log at $LogFile for details." -ForegroundColor Cyan
     # Always close the transcript
     Stop-Transcript
 }
