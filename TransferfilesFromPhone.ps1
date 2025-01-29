@@ -27,6 +27,7 @@ function Copy-MTPFiles {
     )
 
     write-host (Get-Date) "script started" -ForegroundColor Cyan
+    
     # Get the list of files and directories in the source path
     $items = Get-ChildItem -Path $source -Force -ErrorAction SilentlyContinue
 
